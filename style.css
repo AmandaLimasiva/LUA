@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+h1, h2 {
+    position: absolute;
+    /*top: 20px;*/
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#dataHora {
+    top: 60px;
+}
+
+img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.posi{
+    text-align: center;
+    position: fixed;
+    padding: 56px;
+    border-radius: 10px;
+    margin-top: 25em;
+    font-size: 20px;
+    font-weight: 100;
+}

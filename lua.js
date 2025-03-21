@@ -1,21 +1,19 @@
-import { phase } from 'lune';
+import { phase } from "https://cdn.skypack.dev/lune";
 
 function verificaAFase(date) {
-  const opcoes = { timeZone: 'America/Sao_Paulo' };
-  const dataBrasilia = new Date(date.toLocaleString('en-US', opcoes));
-  const lua = phase(dataBrasilia);
+  const lua = phase(date);
   const fase = lua.phase;
-  console.log(fase);
 
   if (fase >= 0 && fase < 0.125) {
     return "Lua Nova";
-} else if (fase >= 0.125 && fase < 0.500) {
+  } else if (fase >= 0.125 && fase < 0.5) {
     return "Lua Crescente";
-} else if (fase >= 0.500 && fase <= 1) {
+  } else if (fase >= 0.5 && fase < 0.875) {
     return "Lua Cheia";
-} else if (fase > 0.75) {
+  } else if (fase >= 0.875 && fase < 1) {
     return "Lua Minguante";
-    }
+  }
+  return "Fase desconhecida";
 }
 
 function obterDataHoraBrasilia() {
@@ -33,6 +31,16 @@ function obterDataHoraBrasilia() {
   return formatador.format(agora);
 }
 
-const data = new Date();
-console.log(`Data e Hora em Brasília: ${obterDataHoraBrasilia()}`);
-console.log(`Fase da Lua: ${verificaAFase(data)}`);
+function atualizarExibicao() {
+  const data = new Date();
+  const fase = verificaAFase(data);
+  const dataHora = obterDataHoraBrasilia();
+
+  document.getElementById("faseLua").textContent = `Fase da Lua: ${fase}`;
+  document.getElementById("dataHora").textContent = `Data e Hora em Brasília: ${dataHora}`;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  atualizarExibicao();
+  setInterval(atualizarExibicao, 60000);
+});
